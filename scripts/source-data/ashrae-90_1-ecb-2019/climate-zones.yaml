@@ -1,0 +1,112 @@
+cooling_degree_day_basis_temperature: 283.15 # 10 C
+heating_degree_day_basis_temperature: 291.15 # 18 C
+thermal_climate_zones:
+  - id: "0"
+    description: "Extremely hot"
+    minimum_cooling_degree_days: 6000
+  - id: "1"
+    description: "Very hot"
+    minimum_cooling_degree_days: 5000
+    maximum_cooling_degree_days: 6000
+    maximum_cooling_degree_days_inclusive: True
+  - id: "2"
+    description: "Hot"
+    minimum_cooling_degree_days: 3500
+    maximum_cooling_degree_days: 5000
+    maximum_cooling_degree_days_inclusive: True
+  - id: "3"
+    description: "Warm"
+    maximum_cooling_degree_days: 3500
+    maximum_cooling_degree_days_inclusive: True
+    maximum_heating_degree_days: 2000
+    maximum_heating_degree_days_inclusive: True
+  - id: "4"
+    description: "Mixed"
+    maximum_cooling_degree_days: 3500
+    maximum_cooling_degree_days_inclusive: True
+    minimum_heating_degree_days: 2000
+    maximum_heating_degree_days: 3000
+    maximum_heating_degree_days_inclusive: True
+  - id: "5"
+    description: "Cool"
+    maximum_cooling_degree_days: 3500
+    maximum_cooling_degree_days_inclusive: True
+    minimum_heating_degree_days: 3000
+    maximum_heating_degree_days: 4000
+    maximum_heating_degree_days_inclusive: True
+  - id: "6"
+    description: "Cold"
+    minimum_heating_degree_days: 4000
+    maximum_heating_degree_days: 5000
+    maximum_heating_degree_days_inclusive: True
+  - id: "7"
+    description: "Very cold"
+    minimum_heating_degree_days: 5000
+    maximum_heating_degree_days: 7000
+    maximum_heating_degree_days_inclusive: True
+  - id: "8"
+    description: "Subarctic/arctic"
+    minimum_heating_degree_days: 7000
+moisture_climate_zones:
+  - id: "A"
+    description: "Humid"
+  - id: "B"
+    description: "Dry"
+  - id: "C"
+    description: "Marine"
+climate_zones:
+  - id: "0A"
+    thermal_climate_zone: "0"
+    moisture_climate_zone: "A"
+  - id: "0B"
+    thermal_climate_zone: "0"
+    moisture_climate_zone: "B"
+  - id: "1A"
+    thermal_climate_zone: "1"
+    moisture_climate_zone: "A"
+  - id: "1B"
+    thermal_climate_zone: "1"
+    moisture_climate_zone: "B"
+  - id: "2A"
+    thermal_climate_zone: "2"
+    moisture_climate_zone: "A"
+  - id: "2B"
+    thermal_climate_zone: "2"
+    moisture_climate_zone: "B"
+  - id: "3A"
+    thermal_climate_zone: "3"
+    moisture_climate_zone: "A"
+  - id: "3B"
+    thermal_climate_zone: "3"
+    moisture_climate_zone: "B"
+  - id: "3C"
+    thermal_climate_zone: "3"
+    moisture_climate_zone: "C"
+  - id: "4A"
+    thermal_climate_zone: "4"
+    moisture_climate_zone: "A"
+  - id: "4B"
+    thermal_climate_zone: "4"
+    moisture_climate_zone: "B"
+  - id: "4C"
+    thermal_climate_zone: "4"
+    moisture_climate_zone: "C"
+  - id: "5A"
+    thermal_climate_zone: "5"
+    moisture_climate_zone: "A"
+  - id: "5B"
+    thermal_climate_zone: "5"
+    moisture_climate_zone: "B"
+  - id: "5C"
+    thermal_climate_zone: "5"
+    moisture_climate_zone: "C"
+  - id: "6A"
+    thermal_climate_zone: "6"
+    moisture_climate_zone: "A"
+  - id: "6B"
+    thermal_climate_zone: "6"
+    moisture_climate_zone: "B"
+  - id: "7"
+    thermal_climate_zone: "7"
+  - id: "8"
+    thermal_climate_zone: "8"

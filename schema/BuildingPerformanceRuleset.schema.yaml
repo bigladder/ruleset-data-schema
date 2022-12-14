@@ -1,0 +1,324 @@
+Schema:
+  Object Type: "Meta"
+  Title: "Building Performance Ruleset Data"
+  Description: "Schema for describing building performance ruleset data"
+  Version: "0.1.0"
+  Root Data Group: BuildingPerformanceRuleset
+  Unit Systems:
+    RulesetUnits:
+      - K-day
+
+SchemaType:
+  Object Type: "Enumeration"
+  Enumerators:
+    BUILDING_PERFORMANCE_RULESET:
+      Description: "Building Performance Ruleset"
+
+BuildingPerformanceRuleset:
+  Object Type: "Data Group"
+  Data Elements:
+    metadata:
+      Description: "Metadata"
+      Data Type: "{Metadata}"
+      Constraints: "schema=BUILDING_PERFORMANCE_RULESET_DATA"
+      Required: True
+    definitions:
+      Description: "Collection of definitions relevant to rules"
+      Data Type: "{Definitions}"
+      Required: True
+    model_rulesets:
+      Description: "List of model rulesets"
+      Data Type: "[{ModelRuleset}]"
+      Required: True
+
+ModelRuleset:
+  Object Type: "Data Group"
+  Data Elements:
+    ruleset_model_types:
+      Description: "List of ruleset model types that this set of rules applies to."
+      Data Type: "[Reference]"
+      Constraints: ":RulesetModelType:"
+      Required: True
+    envelope_rules:
+      Description: "Envelope rules"
+      Data Type: "{EnvelopeRules}"
+      Required: True
+    # hvac_rules:
+    #   Description: "HVAC rules"
+    #   Data Type: "[{HVACRules}]"
+    #   Required: True
+    # lighting_rules:
+    #   Description: "Lighting rules"
+    #   Data Type: "[{LightingRules}]"
+    #   Required: True
+    # equipment_rules:
+    #   Description: "Equipment rules"
+    #   Data Type: "[{EquipmentRules}]"
+    #   Required: True
+    # service_hot_water_rules:
+    #   Description: "Service hot water rules"
+    #   Data Type: "[{ServiceHotWaterRules}]"
+    #   Required: True
+
+EnvelopeRules:
+  Object Type: "Data Group"
+  Data Elements:
+    opaque_envelope_rules:
+      Description: "Opaque envelope rules"
+      Data Type: "{OpaqueEnvelopeRules}"
+      Required: True
+    # fenestration_rules:
+    #   Description: "Fenestration rules"
+    #   Data Type: "[{FenestrationRule}]"
+    #   Required: True
+
+OpaqueEnvelopeRules:
+  Object Type: "Data Group"
+  Data Elements:
+    exterior_roofs:
+      Description: "Exterior roof rules"
+      Data Type: "[{OpaqueEnvelopeRule}]"
+      Required: True
+    semi_exterior_roofs:
+      Description: "Semi-exterior roof rules"
+      Data Type: "[{OpaqueEnvelopeRule}]"
+      Required: True
+    exterior_walls:
+      Description: "Exterior wall rules"
+      Data Type: "[{OpaqueEnvelopeRule}]"
+      Required: True
+    semi_exterior_walls:
+      Description: "Semi-exterior wall rules"
+      Data Type: "[{OpaqueEnvelopeRule}]"
+      Required: True
+    exterior_floors:
+      Description: "Exterior floor rules"
+      Data Type: "[{OpaqueEnvelopeRule}]"
+      Required: True
+    semi_exterior_floors:
+      Description: "Semi-exterior floor rules"
+      Data Type: "[{OpaqueEnvelopeRule}]"
+      Required: True
+    exterior_below_grade_walls:
+      Description: "Exterior below-grade wall rules"
+      Data Type: "[{OpaqueEnvelopeRule}]"
+      Required: True
+    semi_exterior_below_grade_walls:
+      Description: "Semi-exterior below-grade wall rules"
+      Data Type: "[{OpaqueEnvelopeRule}]"
+      Required: True
+    exterior_on_grade_floors:
+      Description: "Exterior on-grade floor rules"
+      Data Type: "[{OpaqueEnvelopeRule}]"
+      Required: True
+    semi_exterior_on_grade_floors:
+      Description: "Semi-exterior on-grade floor rules"
+      Data Type: "[{OpaqueEnvelopeRule}]"
+      Required: True
+
+OpaqueEnvelopeRule:
+  Object Type: "Data Group"
+  Data Elements:
+    climate_zones:
+      Description: "List of climate zone designations that this rules applies to"
+      Data Type: "[Reference]"
+      Constraints: ":ClimateZone:"
+    occupancy_types:
+      Description: "List of occupancy types that this rule applies to"
+      Data Type: "[Reference]"
+      Constraints: ":OccupancyType:"
+    construction_types:
+      Description: "List of construction types that this rule applies to"
+      Data Type: "[Reference]"
+      Constraints: ":ConstructionType:"
+    has_radiant_heating:
+      Description: "This rule applies to envelope components with radiant heating"
+      Data Type: "Boolean"
+    construction:
+      Description: "Construction applied to corresponding envelope components in the ruleset model"
+      Data Type: "{Construction}" # From 229
+      Required: True
+
+Enumerator:
+  Object Type: "Data Group"
+  Data Elements:
+    id:
+      Description: "Enumerator name"
+      Data Type: "ID"
+      Constraints: "(^([A-Z]([A-Z]|[0-9])*)(_([A-Z]|[0-9])+)*$)"
+      Required: True
+    description:
+      Description: "Description"
+      Data Type: "String"
+      Required: True
+    notes:
+      Description: "Notes"
+      Data Type: "String"
+
+Definitions:
+  Object Type: "Data Group"
+  Data Elements:
+    climate_zone_definitions:
+      Description: "List of relevant climate zones"
+      Data Type: "{ClimateZoneDefinitions}"
+      Required: True
+    ruleset_model_types:
+      Description: "List of relevant ruleset model types"
+      Data Type: "[{Enumerator}]"
+      Constraints: "id.Constraints=':RulesetModelType:"
+      Required: True
+    space_conditioning_types:
+      Description: "List of valid space conditioning types"
+      Data Type: "[{Enumerator}]"
+      Constraints: "id.Constraints=':SpaceConditioningType:"
+      Required: True
+    occupancy_types:
+      Description: "List of valid occupancy types"
+      Data Type: "[{Enumerator}]"
+      Constraints: "id.Constraints=':OccupancyType:"
+      Required: True
+    construction_types:
+      Description: "List of valid construction: types"
+      Data Type: "[{Enumerator}]"
+      Constraints: "id.Constraints=':ConstructionType:"
+      Required: True
+    # lighting_building_area_types:
+    #   Description: "List of valid lighting building area types"
+    #   Data Type: "[{Enumerator}]"
+    #   Required: True
+    # lighting_space_types:
+    #   Description: "List of valid lighting space types"
+    #   Data Type: "[{Enumerator}]"
+    #   Required: True
+    # lighting_purpose_types:
+    #   Description: "List of valid lighting purpose types"
+    #   Data Type: "[{Enumerator}]"
+    #   Required: True
+    # exterior_lighting_area_types:
+    #   Description: "List of valid exterior lighting area types"
+    #   Data Type: "[{Enumerator}]"
+    #   Required: True
+    # exterior_lighting_zone_types:
+    #   Description: "List of valid exterior lighting zone types"
+    #   Data Type: "[{Enumerator}]"
+    #   Required: True
+    # ventilation_space_types:
+    #   Description: "List of valid ventilation space types"
+    #   Data Type: "[{Enumerator}]"
+    #   Required: True
+    # service_water_heating_space_types:
+    #   Description: "List of valid ventilation space types"
+    #   Data Type: "[{Enumerator}]"
+    #   Required: True
+    # vertical_fenestration_building_area_types:
+    #   Description: "List of valid vertical fenestration building area types"
+    #   Data Type: "[{Enumerator}]"
+    #   Required: True
+    # additional_surface_adjacency_types:
+    #   Description: "List of valid additional surface adjacency types"
+    #   Data Type: "[{Enumerator}]"
+    #   Required: True
+    #   Note: "In addition to universally defined SurfaceAdjacencyTypes: `EXTERIOR`, `GROUND`, `INTERIOR`, `IDENTICAL`, and `UNDEFINED`."
+    # hvac_building_area_types:
+    #   Description: "List of valid hvac building area types"
+    #   Data Type: "[{Enumerator}]"
+    #   Required: True
+
+ThermalClimateZone:
+  Object Type: "Data Group"
+  Data Elements:
+    id:
+      Description: "Designation"
+      Data Type: "ID"
+      Constraints: ":ThermalClimateZone:"
+      Required: True
+    description:
+      Description: "Description"
+      Data Type: "String"
+      Required: True
+    minimum_cooling_degree_days:
+      Description: "Minimum cooling degree-days"
+      Data Type: "Numeric"
+      Units: "K-day"
+      Constraints: ">=0"
+    minimum_cooling_degree_days_inclusive:
+      Description: "Minimum cooling degree-days is inclusive"
+      Data Type: "Boolean"
+    maximum_cooling_degree_days:
+      Description: "Maximum cooling degree-days"
+      Data Type: "Numeric"
+      Units: "K-day"
+      Constraints: ">=0"
+    maximum_cooling_degree_days_inclusive:
+      Description: "Maximum cooling degree-days is inclusive"
+      Data Type: "Boolean"
+    minimum_heating_degree_days:
+      Description: "Minimum heating degree-days"
+      Data Type: "Numeric"
+      Units: "K-day"
+      Constraints: ">=0"
+    minimum_heating_degree_days_inclusive:
+      Description: "Minimum heating degree-days is inclusive"
+      Data Type: "Boolean"
+    maximum_heating_degree_days:
+      Description: "Maximum heating degree-days"
+      Data Type: "Numeric"
+      Units: "K-day"
+      Constraints: ">=0"
+    maximum_heating_degree_days_inclusive:
+      Description: "Maximum heating degree-days is inclusive"
+      Data Type: "Boolean"
+
+MoistureClimateZone:
+  Object Type: "Data Group"
+  Data Elements:
+    id:
+      Description: "Designation"
+      Data Type: "ID"
+      Constraints: ":MoistureClimateZone:"
+      Required: True
+    description:
+      Description: "Description"
+      Data Type: "String"
+      Required: True
+
+ClimateZone:
+  Object Type: "Data Group"
+  Data Elements:
+    id:
+      Description: "Designation"
+      Data Type: "ID"
+      Constraints: ":ClimateZone:"
+      Required: True
+    thermal_climate_zone:
+      Description: "Reference to the thermal climate zone definition for this climate zone"
+      Data Type: "Reference"
+      Constraints: ":ThermalClimateZone:"
+    moisture_climate_zone:
+      Description: "Reference to the moisture climate zone definition for this climate zone"
+      Data Type: "Reference"
+      Constraints: ":MoistureClimateZone:"
+
+ClimateZoneDefinitions:
+  Object Type: "Data Group"
+  Data Elements:
+    cooling_degree_day_basis_temperature:
+      Description: "Temperature used as the basis for cooling degree-day calculations"
+      Data Type: "Numeric"
+      Units: "K"
+      Constraints: ">=0"
+    heating_degree_day_basis_temperature:
+      Description: "Temperature used as the basis for heating degree-day calculations"
+      Data Type: "Numeric"
+      Units: "K"
+      Constraints: ">=0"
+    thermal_climate_zones:
+      Description: "List of thermal climate zone definitions"
+      Data Type: "[{ThermalClimateZone}]"
+    moisture_climate_zones:
+      Description: "List of moisture climate zone definitions"
+      Data Type: "[{MoistureClimateZone}]"
+    climate_zones:
+      Description: "List of climate zones (thermal and moisture)"
+      Data Type: "[{ClimateZone}]"
+      Required: True

@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "ruleset-data-schema"
+version = "0.1.0"
+description = "Building Performance Ruleset Data Schema"
+authors = ["Big Ladder Software"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+lattice = {git = "https://github.com/bigladder/lattice.git", branch="main"}
+
+[tool.poetry.dev-dependencies]
+doit = "0.33.0"
+tomli = "2.0.1"
+koozie = "1.0.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

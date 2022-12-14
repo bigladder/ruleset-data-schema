@@ -1,0 +1,46 @@
+ruleset_model_types:
+- id: USER
+  description: The building model as described without consideration of the ruleset
+- id: PROPOSED
+  description: The building model that corresponds with the proposed
+    design of the building
+- id: STANDARD
+  description: The building model that corresponds with the standard
+    design of the building
+occupancy_types:
+- id: RESIDENTIAL
+  description: Residential
+  notes: Spaces used primarily for living and sleeping. Residential spaces include,
+    but are not limited to, dwelling units, hotel/motel guest rooms, dormitories,
+    nursing homes, patient rooms in hospitals, lodging houses, fraternity/sorority
+    houses, hostels, prisons, and fire stations.
+- id: NONRESIDENTIAL
+  description: Nonresidential
+  notes: All occupancies other than residential.
+space_conditioning_types:
+  - id: DIRECTLY_CONDITIONED
+    description: Directly conditioned
+  - id: INDIRECTLY_CONDITIONED
+    description: Indirectly conditioned
+  - id: PROCESS_SPACE
+    description: Process space
+  - id: UNCONDITIONED
+    description: Unconditioned
+construction_types:
+  - id: METAL_BUILDING
+    description: Metal building
+  - id: WOOD_FRAMED
+    description: Wood framed
+  - id: METAL_FRAMED
+    description: Metal framed
+  - id: MASS_LIGHT
+    description: Mass, light
+    notes: Light mass walls are walls with a heat capacity of at least 7.0 Btu/ft^2^-^o^F and less than 15.0 Btu/ft^2^-^o^F
+  - id: MASS_HEAVY
+    description: Mass, heavy
+    notes: Heavy mass walls are walls with a heat capacity of at least 15.0 Btu/ft^2^-^o^F
+  - id: RAISED_MASS
+    description: Raised mass
+    notes: Heavy mass walls are walls with a heat capacity of at least 15.0 Btu/ft^2^-^o^F
+  - id: OTHER
+    description: Other
