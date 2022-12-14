@@ -1,0 +1,750 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Building Performance Ruleset Data Schema – Specifications</title><link>https://bigladder.github.io/ruleset-data-schema/specifications/</link><description>Recent content in Specifications on Building Performance Ruleset Data Schema</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://bigladder.github.io/ruleset-data-schema/specifications/index.xml" rel="self" type="application/rss+xml"/><item><title>Specifications: BuildingPerformanceRuleset</title><link>https://bigladder.github.io/ruleset-data-schema/specifications/buildingperformanceruleset/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bigladder.github.io/ruleset-data-schema/specifications/buildingperformanceruleset/</guid><description>
+&lt;h1 id="building-performance-ruleset-data-model-specification">Building Performance Ruleset Data Model Specification&lt;/h1>
+&lt;h2 id="scope">Scope&lt;/h2>
+&lt;h3 id="applicability">Applicability&lt;/h3>
+&lt;h3 id="exclusions">Exclusions&lt;/h3>
+&lt;h2 id="data-model">Data Model&lt;/h2>
+&lt;h3 id="enumerations">Enumerations&lt;/h3>
+&lt;h4 id="schematype">SchemaType&lt;/h4>
+&lt;table>
+&lt;colgroup>
+&lt;col style="width: 43%" />
+&lt;col style="width: 40%" />
+&lt;col style="width: 15%" />
+&lt;/colgroup>
+&lt;thead>
+&lt;tr class="header">
+&lt;th>&lt;strong>Enumerator&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Description&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Notes&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr class="odd">
+&lt;td>&lt;code>BUILDING_PERFORMANCE_RULESET&lt;/code>&lt;/td>
+&lt;td>Building Performance Ruleset&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="data-groups">Data Groups&lt;/h3>
+&lt;h4 id="buildingperformanceruleset">BuildingPerformanceRuleset&lt;/h4>
+&lt;table>
+&lt;colgroup>
+&lt;col style="width: 13%" />
+&lt;col style="width: 13%" />
+&lt;col style="width: 15%" />
+&lt;col style="width: 8%" />
+&lt;col style="width: 32%" />
+&lt;col style="width: 7%" />
+&lt;col style="width: 8%" />
+&lt;/colgroup>
+&lt;thead>
+&lt;tr class="header">
+&lt;th>&lt;strong>Name&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Description&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Data Type&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Units&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Constraints&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Req&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Notes&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr class="odd">
+&lt;td>&lt;code>metadata&lt;/code>&lt;/td>
+&lt;td>Metadata&lt;/td>
+&lt;td>&lt;code>{Metadata}&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;code>schema=BUILDING_PERFORMANCE_RULESET_DATA&lt;/code>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>&lt;code>definitions&lt;/code>&lt;/td>
+&lt;td>Collection of definitions relevant to rules&lt;/td>
+&lt;td>&lt;code>{Definitions}&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>&lt;code>model_rulesets&lt;/code>&lt;/td>
+&lt;td>List of model rulesets&lt;/td>
+&lt;td>&lt;code>[{ModelRuleset}]&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="modelruleset">ModelRuleset&lt;/h4>
+&lt;table style="width:100%;">
+&lt;colgroup>
+&lt;col style="width: 20%" />
+&lt;col style="width: 15%" />
+&lt;col style="width: 16%" />
+&lt;col style="width: 10%" />
+&lt;col style="width: 19%" />
+&lt;col style="width: 8%" />
+&lt;col style="width: 10%" />
+&lt;/colgroup>
+&lt;thead>
+&lt;tr class="header">
+&lt;th>&lt;strong>Name&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Description&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Data Type&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Units&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Constraints&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Req&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Notes&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr class="odd">
+&lt;td>&lt;code>ruleset_model_types&lt;/code>&lt;/td>
+&lt;td>List of ruleset model types that this set of rules applies to.&lt;/td>
+&lt;td>&lt;code>[Reference]&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;code>:RulesetModelType:&lt;/code>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>&lt;code>envelope_rules&lt;/code>&lt;/td>
+&lt;td>Envelope rules&lt;/td>
+&lt;td>&lt;code>{EnvelopeRules}&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="enveloperules">EnvelopeRules&lt;/h4>
+&lt;table>
+&lt;colgroup>
+&lt;col style="width: 21%" />
+&lt;col style="width: 14%" />
+&lt;col style="width: 21%" />
+&lt;col style="width: 9%" />
+&lt;col style="width: 14%" />
+&lt;col style="width: 8%" />
+&lt;col style="width: 9%" />
+&lt;/colgroup>
+&lt;thead>
+&lt;tr class="header">
+&lt;th>&lt;strong>Name&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Description&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Data Type&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Units&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Constraints&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Req&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Notes&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr class="odd">
+&lt;td>&lt;code>opaque_envelope_rules&lt;/code>&lt;/td>
+&lt;td>Opaque envelope rules&lt;/td>
+&lt;td>&lt;code>{OpaqueEnvelopeRules}&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="opaqueenveloperules">OpaqueEnvelopeRules&lt;/h4>
+&lt;table>
+&lt;colgroup>
+&lt;col style="width: 27%" />
+&lt;col style="width: 13%" />
+&lt;col style="width: 20%" />
+&lt;col style="width: 9%" />
+&lt;col style="width: 13%" />
+&lt;col style="width: 7%" />
+&lt;col style="width: 9%" />
+&lt;/colgroup>
+&lt;thead>
+&lt;tr class="header">
+&lt;th>&lt;strong>Name&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Description&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Data Type&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Units&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Constraints&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Req&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Notes&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr class="odd">
+&lt;td>&lt;code>exterior_roofs&lt;/code>&lt;/td>
+&lt;td>Exterior roof rules&lt;/td>
+&lt;td>&lt;code>[{OpaqueEnvelopeRule}]&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>&lt;code>semi_exterior_roofs&lt;/code>&lt;/td>
+&lt;td>Semi-exterior roof rules&lt;/td>
+&lt;td>&lt;code>[{OpaqueEnvelopeRule}]&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>&lt;code>exterior_walls&lt;/code>&lt;/td>
+&lt;td>Exterior wall rules&lt;/td>
+&lt;td>&lt;code>[{OpaqueEnvelopeRule}]&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>&lt;code>semi_exterior_walls&lt;/code>&lt;/td>
+&lt;td>Semi-exterior wall rules&lt;/td>
+&lt;td>&lt;code>[{OpaqueEnvelopeRule}]&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>&lt;code>exterior_floors&lt;/code>&lt;/td>
+&lt;td>Exterior floor rules&lt;/td>
+&lt;td>&lt;code>[{OpaqueEnvelopeRule}]&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>&lt;code>semi_exterior_floors&lt;/code>&lt;/td>
+&lt;td>Semi-exterior floor rules&lt;/td>
+&lt;td>&lt;code>[{OpaqueEnvelopeRule}]&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>&lt;code>exterior_below_grade_walls&lt;/code>&lt;/td>
+&lt;td>Exterior below-grade wall rules&lt;/td>
+&lt;td>&lt;code>[{OpaqueEnvelopeRule}]&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>&lt;code>semi_exterior_below_grade_walls&lt;/code>&lt;/td>
+&lt;td>Semi-exterior below-grade wall rules&lt;/td>
+&lt;td>&lt;code>[{OpaqueEnvelopeRule}]&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>&lt;code>exterior_on_grade_floors&lt;/code>&lt;/td>
+&lt;td>Exterior on-grade floor rules&lt;/td>
+&lt;td>&lt;code>[{OpaqueEnvelopeRule}]&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>&lt;code>semi_exterior_on_grade_floors&lt;/code>&lt;/td>
+&lt;td>Semi-exterior on-grade floor rules&lt;/td>
+&lt;td>&lt;code>[{OpaqueEnvelopeRule}]&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="opaqueenveloperule">OpaqueEnvelopeRule&lt;/h4>
+&lt;table>
+&lt;colgroup>
+&lt;col style="width: 19%" />
+&lt;col style="width: 17%" />
+&lt;col style="width: 15%" />
+&lt;col style="width: 9%" />
+&lt;col style="width: 19%" />
+&lt;col style="width: 8%" />
+&lt;col style="width: 9%" />
+&lt;/colgroup>
+&lt;thead>
+&lt;tr class="header">
+&lt;th>&lt;strong>Name&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Description&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Data Type&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Units&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Constraints&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Req&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Notes&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr class="odd">
+&lt;td>&lt;code>climate_zones&lt;/code>&lt;/td>
+&lt;td>List of climate zone designations that this rules applies to&lt;/td>
+&lt;td>&lt;code>[Reference]&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;code>:ClimateZone:&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>&lt;code>occupancy_types&lt;/code>&lt;/td>
+&lt;td>List of occupancy types that this rule applies to&lt;/td>
+&lt;td>&lt;code>[Reference]&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;code>:OccupancyType:&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>&lt;code>construction_types&lt;/code>&lt;/td>
+&lt;td>List of construction types that this rule applies to&lt;/td>
+&lt;td>&lt;code>[Reference]&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;code>:ConstructionType:&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>&lt;code>has_radiant_heating&lt;/code>&lt;/td>
+&lt;td>This rule applies to envelope components with radiant heating&lt;/td>
+&lt;td>&lt;code>Boolean&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>&lt;code>construction&lt;/code>&lt;/td>
+&lt;td>Construction applied to corresponding envelope components in the ruleset model&lt;/td>
+&lt;td>&lt;code>{Construction}&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="enumerator">Enumerator&lt;/h4>
+&lt;table>
+&lt;colgroup>
+&lt;col style="width: 12%" />
+&lt;col style="width: 13%" />
+&lt;col style="width: 12%" />
+&lt;col style="width: 9%" />
+&lt;col style="width: 36%" />
+&lt;col style="width: 7%" />
+&lt;col style="width: 9%" />
+&lt;/colgroup>
+&lt;thead>
+&lt;tr class="header">
+&lt;th>&lt;strong>Name&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Description&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Data Type&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Units&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Constraints&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Req&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Notes&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr class="odd">
+&lt;td>&lt;code>id&lt;/code>&lt;/td>
+&lt;td>Enumerator name&lt;/td>
+&lt;td>&lt;code>ID&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;code>(^([A-Z]([A-Z]|[0-9])*)(_([A-Z]|[0-9])+)*$)&lt;/code>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>&lt;code>description&lt;/code>&lt;/td>
+&lt;td>Description&lt;/td>
+&lt;td>&lt;code>String&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>&lt;code>notes&lt;/code>&lt;/td>
+&lt;td>Notes&lt;/td>
+&lt;td>&lt;code>String&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="definitions">Definitions&lt;/h4>
+&lt;table>
+&lt;colgroup>
+&lt;col style="width: 18%" />
+&lt;col style="width: 11%" />
+&lt;col style="width: 18%" />
+&lt;col style="width: 7%" />
+&lt;col style="width: 28%" />
+&lt;col style="width: 6%" />
+&lt;col style="width: 7%" />
+&lt;/colgroup>
+&lt;thead>
+&lt;tr class="header">
+&lt;th>&lt;strong>Name&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Description&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Data Type&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Units&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Constraints&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Req&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Notes&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr class="odd">
+&lt;td>&lt;code>climate_zone_definitions&lt;/code>&lt;/td>
+&lt;td>List of relevant climate zones&lt;/td>
+&lt;td>&lt;code>{ClimateZoneDefinitions}&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>&lt;code>ruleset_model_types&lt;/code>&lt;/td>
+&lt;td>List of relevant ruleset model types&lt;/td>
+&lt;td>&lt;code>[{Enumerator}]&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;code>id.Constraints=':RulesetModelType:&lt;/code>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>&lt;code>space_conditioning_types&lt;/code>&lt;/td>
+&lt;td>List of valid space conditioning types&lt;/td>
+&lt;td>&lt;code>[{Enumerator}]&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;code>id.Constraints=':SpaceConditioningType:&lt;/code>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>&lt;code>occupancy_types&lt;/code>&lt;/td>
+&lt;td>List of valid occupancy types&lt;/td>
+&lt;td>&lt;code>[{Enumerator}]&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;code>id.Constraints=':OccupancyType:&lt;/code>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>&lt;code>construction_types&lt;/code>&lt;/td>
+&lt;td>List of valid construction: types&lt;/td>
+&lt;td>&lt;code>[{Enumerator}]&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;code>id.Constraints=':ConstructionType:&lt;/code>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="thermalclimatezone">ThermalClimateZone&lt;/h4>
+&lt;table>
+&lt;colgroup>
+&lt;col style="width: 31%" />
+&lt;col style="width: 13%" />
+&lt;col style="width: 11%" />
+&lt;col style="width: 8%" />
+&lt;col style="width: 18%" />
+&lt;col style="width: 7%" />
+&lt;col style="width: 8%" />
+&lt;/colgroup>
+&lt;thead>
+&lt;tr class="header">
+&lt;th>&lt;strong>Name&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Description&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Data Type&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Units&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Constraints&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Req&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Notes&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr class="odd">
+&lt;td>&lt;code>id&lt;/code>&lt;/td>
+&lt;td>Designation&lt;/td>
+&lt;td>&lt;code>ID&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;code>:ThermalClimateZone:&lt;/code>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>&lt;code>description&lt;/code>&lt;/td>
+&lt;td>Description&lt;/td>
+&lt;td>&lt;code>String&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>&lt;code>minimum_cooling_degree_days&lt;/code>&lt;/td>
+&lt;td>Minimum cooling degree-days&lt;/td>
+&lt;td>&lt;code>Numeric&lt;/code>&lt;/td>
+&lt;td>K·day&lt;/td>
+&lt;td>&lt;code>≥0&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>&lt;code>minimum_cooling_degree_days_inclusive&lt;/code>&lt;/td>
+&lt;td>Minimum cooling degree-days is inclusive&lt;/td>
+&lt;td>&lt;code>Boolean&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>&lt;code>maximum_cooling_degree_days&lt;/code>&lt;/td>
+&lt;td>Maximum cooling degree-days&lt;/td>
+&lt;td>&lt;code>Numeric&lt;/code>&lt;/td>
+&lt;td>K·day&lt;/td>
+&lt;td>&lt;code>≥0&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>&lt;code>maximum_cooling_degree_days_inclusive&lt;/code>&lt;/td>
+&lt;td>Maximum cooling degree-days is inclusive&lt;/td>
+&lt;td>&lt;code>Boolean&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>&lt;code>minimum_heating_degree_days&lt;/code>&lt;/td>
+&lt;td>Minimum heating degree-days&lt;/td>
+&lt;td>&lt;code>Numeric&lt;/code>&lt;/td>
+&lt;td>K·day&lt;/td>
+&lt;td>&lt;code>≥0&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>&lt;code>minimum_heating_degree_days_inclusive&lt;/code>&lt;/td>
+&lt;td>Minimum heating degree-days is inclusive&lt;/td>
+&lt;td>&lt;code>Boolean&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>&lt;code>maximum_heating_degree_days&lt;/code>&lt;/td>
+&lt;td>Maximum heating degree-days&lt;/td>
+&lt;td>&lt;code>Numeric&lt;/code>&lt;/td>
+&lt;td>K·day&lt;/td>
+&lt;td>&lt;code>≥0&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>&lt;code>maximum_heating_degree_days_inclusive&lt;/code>&lt;/td>
+&lt;td>Maximum heating degree-days is inclusive&lt;/td>
+&lt;td>&lt;code>Boolean&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="moistureclimatezone">MoistureClimateZone&lt;/h4>
+&lt;table>
+&lt;colgroup>
+&lt;col style="width: 14%" />
+&lt;col style="width: 16%" />
+&lt;col style="width: 14%" />
+&lt;col style="width: 10%" />
+&lt;col style="width: 23%" />
+&lt;col style="width: 9%" />
+&lt;col style="width: 10%" />
+&lt;/colgroup>
+&lt;thead>
+&lt;tr class="header">
+&lt;th>&lt;strong>Name&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Description&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Data Type&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Units&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Constraints&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Req&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Notes&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr class="odd">
+&lt;td>&lt;code>id&lt;/code>&lt;/td>
+&lt;td>Designation&lt;/td>
+&lt;td>&lt;code>ID&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;code>:MoistureClimateZone:&lt;/code>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>&lt;code>description&lt;/code>&lt;/td>
+&lt;td>Description&lt;/td>
+&lt;td>&lt;code>String&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="climatezone">ClimateZone&lt;/h4>
+&lt;table>
+&lt;colgroup>
+&lt;col style="width: 21%" />
+&lt;col style="width: 15%" />
+&lt;col style="width: 13%" />
+&lt;col style="width: 10%" />
+&lt;col style="width: 21%" />
+&lt;col style="width: 8%" />
+&lt;col style="width: 10%" />
+&lt;/colgroup>
+&lt;thead>
+&lt;tr class="header">
+&lt;th>&lt;strong>Name&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Description&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Data Type&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Units&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Constraints&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Req&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Notes&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr class="odd">
+&lt;td>&lt;code>id&lt;/code>&lt;/td>
+&lt;td>Designation&lt;/td>
+&lt;td>&lt;code>ID&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;code>:ClimateZone:&lt;/code>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>&lt;code>thermal_climate_zone&lt;/code>&lt;/td>
+&lt;td>Reference to the thermal climate zone definition for this climate zone&lt;/td>
+&lt;td>&lt;code>Reference&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;code>:ThermalClimateZone:&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>&lt;code>moisture_climate_zone&lt;/code>&lt;/td>
+&lt;td>Reference to the moisture climate zone definition for this climate zone&lt;/td>
+&lt;td>&lt;code>Reference&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;code>:MoistureClimateZone:&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="climatezonedefinitions">ClimateZoneDefinitions&lt;/h4>
+&lt;table>
+&lt;colgroup>
+&lt;col style="width: 29%" />
+&lt;col style="width: 12%" />
+&lt;col style="width: 20%" />
+&lt;col style="width: 8%" />
+&lt;col style="width: 12%" />
+&lt;col style="width: 7%" />
+&lt;col style="width: 8%" />
+&lt;/colgroup>
+&lt;thead>
+&lt;tr class="header">
+&lt;th>&lt;strong>Name&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Description&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Data Type&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Units&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Constraints&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Req&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Notes&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr class="odd">
+&lt;td>&lt;code>cooling_degree_day_basis_temperature&lt;/code>&lt;/td>
+&lt;td>Temperature used as the basis for cooling degree-day calculations&lt;/td>
+&lt;td>&lt;code>Numeric&lt;/code>&lt;/td>
+&lt;td>K&lt;/td>
+&lt;td>&lt;code>≥0&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>&lt;code>heating_degree_day_basis_temperature&lt;/code>&lt;/td>
+&lt;td>Temperature used as the basis for heating degree-day calculations&lt;/td>
+&lt;td>&lt;code>Numeric&lt;/code>&lt;/td>
+&lt;td>K&lt;/td>
+&lt;td>&lt;code>≥0&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>&lt;code>thermal_climate_zones&lt;/code>&lt;/td>
+&lt;td>List of thermal climate zone definitions&lt;/td>
+&lt;td>&lt;code>[{ThermalClimateZone}]&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="even">
+&lt;td>&lt;code>moisture_climate_zones&lt;/code>&lt;/td>
+&lt;td>List of moisture climate zone definitions&lt;/td>
+&lt;td>&lt;code>[{MoistureClimateZone}]&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr class="odd">
+&lt;td>&lt;code>climate_zones&lt;/code>&lt;/td>
+&lt;td>List of climate zones (thermal and moisture)&lt;/td>
+&lt;td>&lt;code>[{ClimateZone}]&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="verification-rules">Verification Rules&lt;/h2>
+&lt;h2 id="publishing-rules">Publishing Rules&lt;/h2>
+&lt;h2 id="application-rules">Application Rules&lt;/h2>
+&lt;p>None.&lt;/p></description></item></channel></rss>
