@@ -15,7 +15,7 @@ for ruleset_source in os.listdir(SOURCE_DATA_PATH):
   path_name = os.path.join(SOURCE_DATA_PATH,ruleset_source)
   if not os.path.isdir(path_name):
     continue
-  example_file_name = f"{lattice.file_io.get_file_basename(path_name, depth=0)}.yaml"
+  example_file_name = f"{lattice.get_file_basename(path_name, depth=0)}.yaml"
   rnd = Random()
   rnd.seed(example_file_name)
   timestamp = datetime.datetime.now().isoformat("T","minutes")
@@ -71,12 +71,12 @@ for ruleset_source in os.listdir(SOURCE_DATA_PATH):
 
   # Enumerations
   source_file_name = "enumerations.yaml"
-  example["definitions"].update(lattice.file_io.load(os.path.join(path_name, source_file_name)))
+  example["definitions"].update(lattice.load(os.path.join(path_name, source_file_name)))
 
 
   # Climate Zones
   source_file_name = "climate-zones.yaml"
-  example["definitions"]["climate_zone_definitions"] = lattice.file_io.load(os.path.join(path_name, source_file_name))
+  example["definitions"]["climate_zone_definitions"] = lattice.load(os.path.join(path_name, source_file_name))
 
   # Opaque Envelope
   source_file_name = "opaque-envelope.csv"
@@ -143,4 +143,4 @@ for ruleset_source in os.listdir(SOURCE_DATA_PATH):
 
         example["model_rulesets"][0]["envelope_rules"]["opaque_envelope_rules"][category].append(rule)
 
-  lattice.file_io.dump(example, os.path.join(EXAMPLE_FILE_DIR_PATH, example_file_name))
+  lattice.dump(example, os.path.join(EXAMPLE_FILE_DIR_PATH, example_file_name))
