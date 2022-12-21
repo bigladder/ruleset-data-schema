@@ -1,14 +1,57 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Building Performance Ruleset Data Schema – Specifications</title><link>https://bigladder.github.io/ruleset-data-schema/specifications/</link><description>Recent content in Specifications on Building Performance Ruleset Data Schema</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://bigladder.github.io/ruleset-data-schema/specifications/index.xml" rel="self" type="application/rss+xml"/><item><title>Specifications: BuildingPerformanceRuleset</title><link>https://bigladder.github.io/ruleset-data-schema/specifications/buildingperformanceruleset/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bigladder.github.io/ruleset-data-schema/specifications/buildingperformanceruleset/</guid><description>
-&lt;h1 id="building-performance-ruleset-data-model-specification">Building Performance Ruleset Data Model Specification&lt;/h1>
+&lt;h1 id="building-performance-ruleset-data-model-specification">Building
+Performance Ruleset Data Model Specification&lt;/h1>
+&lt;p>This specification is intended to supplement the ASHRAE Standard 229P
+Ruleset Model Description (RMD) schema. Where the RMD schema attempts to
+characterize ruleset models for a specific building design, this
+specification characterizes the data from the ruleset needed to apply a
+ruleset to any building design.&lt;/p>
 &lt;h2 id="scope">Scope&lt;/h2>
+&lt;p>This specification covers building performance ruleset data.&lt;/p>
 &lt;h3 id="applicability">Applicability&lt;/h3>
+&lt;p>This specifcation applies to any building performance ruleset
+containing rules on how to transform a user design model into derivative
+buidling design models. Such derivatives go by several names within the
+industry, including (but not limited to):&lt;/p>
+&lt;ul>
+&lt;li>Proposed design&lt;/li>
+&lt;li>Budget design&lt;/li>
+&lt;li>Standard design&lt;/li>
+&lt;li>Reference design&lt;/li>
+&lt;li>Baseline desing&lt;/li>
+&lt;li>Benchmark design&lt;/li>
+&lt;li>Prescriptive design&lt;/li>
+&lt;/ul>
+&lt;p>This specification also covers definitons of terms within the ruleset
+that are required to interpret the rules, such as definitions of:&lt;/p>
+&lt;ul>
+&lt;li>Climate zones&lt;/li>
+&lt;li>Occupancy types&lt;/li>
+&lt;li>Space conditioning types&lt;/li>
+&lt;li>Space function types&lt;/li>
+&lt;li>Construction types&lt;/li>
+&lt;/ul>
+&lt;p>This draft of the specification only includes ruleset data for
+describing opaque envelope rules.&lt;/p>
 &lt;h3 id="exclusions">Exclusions&lt;/h3>
+&lt;p>This specification does not cover rules that involve more
+sophisticated logic that is better suited for programming-language
+spcific syntax rather than data files.&lt;/p>
+&lt;p>This draft of the specification does not include ruleset data for the
+following types of rules (but are planned for future versions):&lt;/p>
+&lt;ul>
+&lt;li>Fenestration rules&lt;/li>
+&lt;li>HVAC rules&lt;/li>
+&lt;li>Lighting rules&lt;/li>
+&lt;li>Equipment rules&lt;/li>
+&lt;li>Service hot water rules&lt;/li>
+&lt;/ul>
 &lt;h2 id="data-model">Data Model&lt;/h2>
 &lt;h3 id="enumerations">Enumerations&lt;/h3>
 &lt;h4 id="schematype">SchemaType&lt;/h4>
-&lt;table>
+&lt;table style="width:99%;">
 &lt;colgroup>
-&lt;col style="width: 43%" />
+&lt;col style="width: 42%" />
 &lt;col style="width: 40%" />
 &lt;col style="width: 15%" />
 &lt;/colgroup>
@@ -29,13 +72,13 @@
 &lt;/table>
 &lt;h3 id="data-groups">Data Groups&lt;/h3>
 &lt;h4 id="buildingperformanceruleset">BuildingPerformanceRuleset&lt;/h4>
-&lt;table>
+&lt;table style="width:96%;">
 &lt;colgroup>
 &lt;col style="width: 13%" />
-&lt;col style="width: 13%" />
-&lt;col style="width: 15%" />
+&lt;col style="width: 12%" />
+&lt;col style="width: 14%" />
 &lt;col style="width: 8%" />
-&lt;col style="width: 32%" />
+&lt;col style="width: 31%" />
 &lt;col style="width: 7%" />
 &lt;col style="width: 8%" />
 &lt;/colgroup>
@@ -81,13 +124,13 @@
 &lt;/tbody>
 &lt;/table>
 &lt;h4 id="modelruleset">ModelRuleset&lt;/h4>
-&lt;table style="width:100%;">
+&lt;table style="width:96%;">
 &lt;colgroup>
 &lt;col style="width: 20%" />
 &lt;col style="width: 15%" />
 &lt;col style="width: 16%" />
 &lt;col style="width: 10%" />
-&lt;col style="width: 19%" />
+&lt;col style="width: 15%" />
 &lt;col style="width: 8%" />
 &lt;col style="width: 10%" />
 &lt;/colgroup>
@@ -108,7 +151,7 @@
 &lt;td>List of ruleset model types that this set of rules applies to.&lt;/td>
 &lt;td>&lt;code>[Reference]&lt;/code>&lt;/td>
 &lt;td>&lt;/td>
-&lt;td>&lt;code>:RulesetModelType:&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
 &lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
 &lt;td>&lt;/td>
 &lt;/tr>
@@ -124,14 +167,14 @@
 &lt;/tbody>
 &lt;/table>
 &lt;h4 id="enveloperules">EnvelopeRules&lt;/h4>
-&lt;table>
+&lt;table style="width:96%;">
 &lt;colgroup>
-&lt;col style="width: 21%" />
+&lt;col style="width: 20%" />
 &lt;col style="width: 14%" />
-&lt;col style="width: 21%" />
+&lt;col style="width: 20%" />
 &lt;col style="width: 9%" />
 &lt;col style="width: 14%" />
-&lt;col style="width: 8%" />
+&lt;col style="width: 7%" />
 &lt;col style="width: 9%" />
 &lt;/colgroup>
 &lt;thead>
@@ -158,15 +201,15 @@
 &lt;/tbody>
 &lt;/table>
 &lt;h4 id="opaqueenveloperules">OpaqueEnvelopeRules&lt;/h4>
-&lt;table>
+&lt;table style="width:96%;">
 &lt;colgroup>
-&lt;col style="width: 27%" />
+&lt;col style="width: 26%" />
 &lt;col style="width: 13%" />
-&lt;col style="width: 20%" />
-&lt;col style="width: 9%" />
+&lt;col style="width: 19%" />
+&lt;col style="width: 8%" />
 &lt;col style="width: 13%" />
 &lt;col style="width: 7%" />
-&lt;col style="width: 9%" />
+&lt;col style="width: 8%" />
 &lt;/colgroup>
 &lt;thead>
 &lt;tr class="header">
@@ -273,13 +316,13 @@
 &lt;/tbody>
 &lt;/table>
 &lt;h4 id="opaqueenveloperule">OpaqueEnvelopeRule&lt;/h4>
-&lt;table>
+&lt;table style="width:96%;">
 &lt;colgroup>
 &lt;col style="width: 19%" />
 &lt;col style="width: 17%" />
 &lt;col style="width: 15%" />
 &lt;col style="width: 9%" />
-&lt;col style="width: 19%" />
+&lt;col style="width: 14%" />
 &lt;col style="width: 8%" />
 &lt;col style="width: 9%" />
 &lt;/colgroup>
@@ -300,7 +343,7 @@
 &lt;td>List of climate zone designations that this rules applies to&lt;/td>
 &lt;td>&lt;code>[Reference]&lt;/code>&lt;/td>
 &lt;td>&lt;/td>
-&lt;td>&lt;code>:ClimateZone:&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
 &lt;td>&lt;/td>
 &lt;td>&lt;/td>
 &lt;/tr>
@@ -309,7 +352,7 @@
 &lt;td>List of occupancy types that this rule applies to&lt;/td>
 &lt;td>&lt;code>[Reference]&lt;/code>&lt;/td>
 &lt;td>&lt;/td>
-&lt;td>&lt;code>:OccupancyType:&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
 &lt;td>&lt;/td>
 &lt;td>&lt;/td>
 &lt;/tr>
@@ -318,7 +361,7 @@
 &lt;td>List of construction types that this rule applies to&lt;/td>
 &lt;td>&lt;code>[Reference]&lt;/code>&lt;/td>
 &lt;td>&lt;/td>
-&lt;td>&lt;code>:ConstructionType:&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
 &lt;td>&lt;/td>
 &lt;td>&lt;/td>
 &lt;/tr>
@@ -333,7 +376,8 @@
 &lt;/tr>
 &lt;tr class="odd">
 &lt;td>&lt;code>construction&lt;/code>&lt;/td>
-&lt;td>Construction applied to corresponding envelope components in the ruleset model&lt;/td>
+&lt;td>Construction applied to corresponding envelope components in the
+ruleset model&lt;/td>
 &lt;td>&lt;code>{Construction}&lt;/code>&lt;/td>
 &lt;td>&lt;/td>
 &lt;td>&lt;/td>
@@ -343,15 +387,15 @@
 &lt;/tbody>
 &lt;/table>
 &lt;h4 id="enumerator">Enumerator&lt;/h4>
-&lt;table>
+&lt;table style="width:96%;">
 &lt;colgroup>
-&lt;col style="width: 12%" />
+&lt;col style="width: 11%" />
 &lt;col style="width: 13%" />
-&lt;col style="width: 12%" />
-&lt;col style="width: 9%" />
-&lt;col style="width: 36%" />
+&lt;col style="width: 11%" />
+&lt;col style="width: 8%" />
+&lt;col style="width: 35%" />
 &lt;col style="width: 7%" />
-&lt;col style="width: 9%" />
+&lt;col style="width: 8%" />
 &lt;/colgroup>
 &lt;thead>
 &lt;tr class="header">
@@ -395,13 +439,13 @@
 &lt;/tbody>
 &lt;/table>
 &lt;h4 id="definitions">Definitions&lt;/h4>
-&lt;table>
+&lt;table style="width:97%;">
 &lt;colgroup>
 &lt;col style="width: 18%" />
 &lt;col style="width: 11%" />
 &lt;col style="width: 18%" />
 &lt;col style="width: 7%" />
-&lt;col style="width: 28%" />
+&lt;col style="width: 27%" />
 &lt;col style="width: 6%" />
 &lt;col style="width: 7%" />
 &lt;/colgroup>
@@ -431,7 +475,7 @@
 &lt;td>List of relevant ruleset model types&lt;/td>
 &lt;td>&lt;code>[{Enumerator}]&lt;/code>&lt;/td>
 &lt;td>&lt;/td>
-&lt;td>&lt;code>id.Constraints=':RulesetModelType:&lt;/code>&lt;/td>
+&lt;td>&lt;code>id.Constraints=:RulesetModelType:&lt;/code>&lt;/td>
 &lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
 &lt;td>&lt;/td>
 &lt;/tr>
@@ -440,7 +484,7 @@
 &lt;td>List of valid space conditioning types&lt;/td>
 &lt;td>&lt;code>[{Enumerator}]&lt;/code>&lt;/td>
 &lt;td>&lt;/td>
-&lt;td>&lt;code>id.Constraints=':SpaceConditioningType:&lt;/code>&lt;/td>
+&lt;td>&lt;code>id.Constraints=:SpaceConditioningType:&lt;/code>&lt;/td>
 &lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
 &lt;td>&lt;/td>
 &lt;/tr>
@@ -449,7 +493,7 @@
 &lt;td>List of valid occupancy types&lt;/td>
 &lt;td>&lt;code>[{Enumerator}]&lt;/code>&lt;/td>
 &lt;td>&lt;/td>
-&lt;td>&lt;code>id.Constraints=':OccupancyType:&lt;/code>&lt;/td>
+&lt;td>&lt;code>id.Constraints=:OccupancyType:&lt;/code>&lt;/td>
 &lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
 &lt;td>&lt;/td>
 &lt;/tr>
@@ -458,20 +502,20 @@
 &lt;td>List of valid construction: types&lt;/td>
 &lt;td>&lt;code>[{Enumerator}]&lt;/code>&lt;/td>
 &lt;td>&lt;/td>
-&lt;td>&lt;code>id.Constraints=':ConstructionType:&lt;/code>&lt;/td>
+&lt;td>&lt;code>id.Constraints=:ConstructionType:&lt;/code>&lt;/td>
 &lt;td>&lt;span class="math inline">\(✓\)&lt;/span>&lt;/td>
 &lt;td>&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
 &lt;h4 id="thermalclimatezone">ThermalClimateZone&lt;/h4>
-&lt;table>
+&lt;table style="width:96%;">
 &lt;colgroup>
-&lt;col style="width: 31%" />
-&lt;col style="width: 13%" />
+&lt;col style="width: 30%" />
+&lt;col style="width: 12%" />
 &lt;col style="width: 11%" />
 &lt;col style="width: 8%" />
-&lt;col style="width: 18%" />
+&lt;col style="width: 17%" />
 &lt;col style="width: 7%" />
 &lt;col style="width: 8%" />
 &lt;/colgroup>
@@ -580,14 +624,14 @@
 &lt;/tbody>
 &lt;/table>
 &lt;h4 id="moistureclimatezone">MoistureClimateZone&lt;/h4>
-&lt;table>
+&lt;table style="width:96%;">
 &lt;colgroup>
-&lt;col style="width: 14%" />
-&lt;col style="width: 16%" />
-&lt;col style="width: 14%" />
+&lt;col style="width: 13%" />
+&lt;col style="width: 15%" />
+&lt;col style="width: 13%" />
 &lt;col style="width: 10%" />
-&lt;col style="width: 23%" />
-&lt;col style="width: 9%" />
+&lt;col style="width: 22%" />
+&lt;col style="width: 8%" />
 &lt;col style="width: 10%" />
 &lt;/colgroup>
 &lt;thead>
@@ -623,15 +667,15 @@
 &lt;/tbody>
 &lt;/table>
 &lt;h4 id="climatezone">ClimateZone&lt;/h4>
-&lt;table>
+&lt;table style="width:96%;">
 &lt;colgroup>
-&lt;col style="width: 21%" />
-&lt;col style="width: 15%" />
-&lt;col style="width: 13%" />
-&lt;col style="width: 10%" />
-&lt;col style="width: 21%" />
+&lt;col style="width: 20%" />
+&lt;col style="width: 14%" />
+&lt;col style="width: 12%" />
+&lt;col style="width: 9%" />
+&lt;col style="width: 20%" />
 &lt;col style="width: 8%" />
-&lt;col style="width: 10%" />
+&lt;col style="width: 9%" />
 &lt;/colgroup>
 &lt;thead>
 &lt;tr class="header">
@@ -656,7 +700,8 @@
 &lt;/tr>
 &lt;tr class="even">
 &lt;td>&lt;code>thermal_climate_zone&lt;/code>&lt;/td>
-&lt;td>Reference to the thermal climate zone definition for this climate zone&lt;/td>
+&lt;td>Reference to the thermal climate zone definition for this climate
+zone&lt;/td>
 &lt;td>&lt;code>Reference&lt;/code>&lt;/td>
 &lt;td>&lt;/td>
 &lt;td>&lt;code>:ThermalClimateZone:&lt;/code>&lt;/td>
@@ -665,7 +710,8 @@
 &lt;/tr>
 &lt;tr class="odd">
 &lt;td>&lt;code>moisture_climate_zone&lt;/code>&lt;/td>
-&lt;td>Reference to the moisture climate zone definition for this climate zone&lt;/td>
+&lt;td>Reference to the moisture climate zone definition for this climate
+zone&lt;/td>
 &lt;td>&lt;code>Reference&lt;/code>&lt;/td>
 &lt;td>&lt;/td>
 &lt;td>&lt;code>:MoistureClimateZone:&lt;/code>&lt;/td>
@@ -675,14 +721,14 @@
 &lt;/tbody>
 &lt;/table>
 &lt;h4 id="climatezonedefinitions">ClimateZoneDefinitions&lt;/h4>
-&lt;table>
+&lt;table style="width:97%;">
 &lt;colgroup>
-&lt;col style="width: 29%" />
+&lt;col style="width: 28%" />
 &lt;col style="width: 12%" />
-&lt;col style="width: 20%" />
+&lt;col style="width: 19%" />
 &lt;col style="width: 8%" />
 &lt;col style="width: 12%" />
-&lt;col style="width: 7%" />
+&lt;col style="width: 6%" />
 &lt;col style="width: 8%" />
 &lt;/colgroup>
 &lt;thead>
@@ -699,7 +745,8 @@
 &lt;tbody>
 &lt;tr class="odd">
 &lt;td>&lt;code>cooling_degree_day_basis_temperature&lt;/code>&lt;/td>
-&lt;td>Temperature used as the basis for cooling degree-day calculations&lt;/td>
+&lt;td>Temperature used as the basis for cooling degree-day
+calculations&lt;/td>
 &lt;td>&lt;code>Numeric&lt;/code>&lt;/td>
 &lt;td>K&lt;/td>
 &lt;td>&lt;code>≥0&lt;/code>&lt;/td>
@@ -708,7 +755,8 @@
 &lt;/tr>
 &lt;tr class="even">
 &lt;td>&lt;code>heating_degree_day_basis_temperature&lt;/code>&lt;/td>
-&lt;td>Temperature used as the basis for heating degree-day calculations&lt;/td>
+&lt;td>Temperature used as the basis for heating degree-day
+calculations&lt;/td>
 &lt;td>&lt;code>Numeric&lt;/code>&lt;/td>
 &lt;td>K&lt;/td>
 &lt;td>&lt;code>≥0&lt;/code>&lt;/td>
@@ -745,6 +793,8 @@
 &lt;/tbody>
 &lt;/table>
 &lt;h2 id="verification-rules">Verification Rules&lt;/h2>
+&lt;p>None.&lt;/p>
 &lt;h2 id="publishing-rules">Publishing Rules&lt;/h2>
+&lt;p>None.&lt;/p>
 &lt;h2 id="application-rules">Application Rules&lt;/h2>
 &lt;p>None.&lt;/p></description></item></channel></rss>
