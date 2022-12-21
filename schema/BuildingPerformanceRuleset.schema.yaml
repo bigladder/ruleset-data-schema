@@ -37,7 +37,7 @@ ModelRuleset:
     ruleset_model_types:
       Description: "List of ruleset model types that this set of rules applies to."
       Data Type: "[Reference]"
-      Constraints: ":RulesetModelType:"
+#      Constraints: ":RulesetModelType:"
       Required: True
     envelope_rules:
       Description: "Envelope rules"
@@ -122,15 +122,15 @@ OpaqueEnvelopeRule:
     climate_zones:
       Description: "List of climate zone designations that this rules applies to"
       Data Type: "[Reference]"
-      Constraints: ":ClimateZone:"
+#      Constraints: ":ClimateZone:"
     occupancy_types:
       Description: "List of occupancy types that this rule applies to"
       Data Type: "[Reference]"
-      Constraints: ":OccupancyType:"
+#      Constraints: ":OccupancyType:"
     construction_types:
       Description: "List of construction types that this rule applies to"
       Data Type: "[Reference]"
-      Constraints: ":ConstructionType:"
+#      Constraints: ":ConstructionType:"
     has_radiant_heating:
       Description: "This rule applies to envelope components with radiant heating"
       Data Type: "Boolean"
@@ -165,22 +165,22 @@ Definitions:
     ruleset_model_types:
       Description: "List of relevant ruleset model types"
       Data Type: "[{Enumerator}]"
-      Constraints: "id.Constraints=':RulesetModelType:"
+      Constraints: "id.Constraints=:RulesetModelType:"
       Required: True
     space_conditioning_types:
       Description: "List of valid space conditioning types"
       Data Type: "[{Enumerator}]"
-      Constraints: "id.Constraints=':SpaceConditioningType:"
+      Constraints: "id.Constraints=:SpaceConditioningType:"
       Required: True
     occupancy_types:
       Description: "List of valid occupancy types"
       Data Type: "[{Enumerator}]"
-      Constraints: "id.Constraints=':OccupancyType:"
+      Constraints: "id.Constraints=:OccupancyType:"
       Required: True
     construction_types:
       Description: "List of valid construction: types"
       Data Type: "[{Enumerator}]"
-      Constraints: "id.Constraints=':ConstructionType:"
+      Constraints: "id.Constraints=:ConstructionType:"
       Required: True
     # lighting_building_area_types:
     #   Description: "List of valid lighting building area types"
