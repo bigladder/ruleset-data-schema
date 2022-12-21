@@ -1,0 +1,2571 @@
+metadata:
+  data_model: ''
+  schema: BUILDING_PERFORMANCE_RULESET_DATA
+  schema_version: 0.1.0
+  description: 2019 ASHRAE Standard 90.1 Energy Cost Budget
+  data_timestamp: 2022-12-14T14:34Z
+  id: df5fb3e5-d1e6-481c-85dc-f4981ab70ec7
+  data_version: 1
+definitions:
+  climate_zone_definitions:
+    cooling_degree_day_basis_temperature: 283.15
+    heating_degree_day_basis_temperature: 291.15
+    thermal_climate_zones:
+    - id: '0'
+      description: Extremely hot
+      minimum_cooling_degree_days: 6000
+    - id: '1'
+      description: Very hot
+      minimum_cooling_degree_days: 5000
+      maximum_cooling_degree_days: 6000
+      maximum_cooling_degree_days_inclusive: true
+    - id: '2'
+      description: Hot
+      minimum_cooling_degree_days: 3500
+      maximum_cooling_degree_days: 5000
+      maximum_cooling_degree_days_inclusive: true
+    - id: '3'
+      description: Warm
+      maximum_cooling_degree_days: 3500
+      maximum_cooling_degree_days_inclusive: true
+      maximum_heating_degree_days: 2000
+      maximum_heating_degree_days_inclusive: true
+    - id: '4'
+      description: Mixed
+      maximum_cooling_degree_days: 3500
+      maximum_cooling_degree_days_inclusive: true
+      minimum_heating_degree_days: 2000
+      maximum_heating_degree_days: 3000
+      maximum_heating_degree_days_inclusive: true
+    - id: '5'
+      description: Cool
+      maximum_cooling_degree_days: 3500
+      maximum_cooling_degree_days_inclusive: true
+      minimum_heating_degree_days: 3000
+      maximum_heating_degree_days: 4000
+      maximum_heating_degree_days_inclusive: true
+    - id: '6'
+      description: Cold
+      minimum_heating_degree_days: 4000
+      maximum_heating_degree_days: 5000
+      maximum_heating_degree_days_inclusive: true
+    - id: '7'
+      description: Very cold
+      minimum_heating_degree_days: 5000
+      maximum_heating_degree_days: 7000
+      maximum_heating_degree_days_inclusive: true
+    - id: '8'
+      description: Subarctic/arctic
+      minimum_heating_degree_days: 7000
+    moisture_climate_zones:
+    - id: A
+      description: Humid
+    - id: B
+      description: Dry
+    - id: C
+      description: Marine
+    climate_zones:
+    - id: 0A
+      thermal_climate_zone: '0'
+      moisture_climate_zone: A
+    - id: 0B
+      thermal_climate_zone: '0'
+      moisture_climate_zone: B
+    - id: 1A
+      thermal_climate_zone: '1'
+      moisture_climate_zone: A
+    - id: 1B
+      thermal_climate_zone: '1'
+      moisture_climate_zone: B
+    - id: 2A
+      thermal_climate_zone: '2'
+      moisture_climate_zone: A
+    - id: 2B
+      thermal_climate_zone: '2'
+      moisture_climate_zone: B
+    - id: 3A
+      thermal_climate_zone: '3'
+      moisture_climate_zone: A
+    - id: 3B
+      thermal_climate_zone: '3'
+      moisture_climate_zone: B
+    - id: 3C
+      thermal_climate_zone: '3'
+      moisture_climate_zone: C
+    - id: 4A
+      thermal_climate_zone: '4'
+      moisture_climate_zone: A
+    - id: 4B
+      thermal_climate_zone: '4'
+      moisture_climate_zone: B
+    - id: 4C
+      thermal_climate_zone: '4'
+      moisture_climate_zone: C
+    - id: 5A
+      thermal_climate_zone: '5'
+      moisture_climate_zone: A
+    - id: 5B
+      thermal_climate_zone: '5'
+      moisture_climate_zone: B
+    - id: 5C
+      thermal_climate_zone: '5'
+      moisture_climate_zone: C
+    - id: 6A
+      thermal_climate_zone: '6'
+      moisture_climate_zone: A
+    - id: 6B
+      thermal_climate_zone: '6'
+      moisture_climate_zone: B
+    - id: '7'
+      thermal_climate_zone: '7'
+    - id: '8'
+      thermal_climate_zone: '8'
+  ruleset_model_types:
+  - id: USER
+    description: The building model as described without consideration of the ruleset
+  - id: PROPOSED
+    description: The building model that corresponds with the proposed design of the
+      building
+  - id: BUDGET
+    description: The building model that corresponds with the budget design of the
+      building
+  occupancy_types:
+  - id: RESIDENTIAL
+    description: Residential
+    notes: Spaces used primarily for living and sleeping. Residential spaces include,
+      but are not limited to, dwelling units, hotel/motel guest rooms, dormitories,
+      nursing homes, patient rooms in hospitals, lodging houses, fraternity/sorority
+      houses, hostels, prisons, and fire stations.
+  - id: NONRESIDENTIAL
+    description: Nonresidential
+    notes: All occupancies other than residential.
+  space_conditioning_types:
+  - id: HEATED_AND_COOLED
+    description: Heated and cooled
+  - id: HEATED_ONLY
+    description: Heated only
+  - id: SEMIHEATED
+    description: Semiheated
+  - id: UNCONDITIONED
+    description: Unconditioned
+  construction_types:
+  - id: METAL_BUILDING
+    description: Metal building
+  - id: WOOD_FRAMED
+    description: Wood-framed
+  - id: STEEL_FRAMED
+    description: Steel-framed
+  - id: MASS
+    description: Mass
+  - id: INSULATION_ENTIRELY_ABOVE_DECK
+    description: Insulation entirely above deck
+  - id: ATTIC
+    description: Attic
+  - id: BELOW_GRADE_WALL
+    description: Below-grade wall
+  - id: STEEL_JOIST
+    description: Steel joist
+  - id: SLAB_ON_GRADE
+    description: Slab-on-grade
+  - id: OTHER
+    description: Other
+model_rulesets:
+- ruleset_model_types:
+  - BUDGET
+  envelope_rules:
+    opaque_envelope_rules:
+      exterior_roofs:
+      - climate_zones:
+        - 0A
+        - 0B
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - INSULATION_ENTIRELY_ABOVE_DECK
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.22145230123793583
+      - climate_zones:
+        - 0A
+        - 0B
+        occupancy_types:
+        - RESIDENTIAL
+        construction_types:
+        - INSULATION_ENTIRELY_ABOVE_DECK
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.1817044522977935
+      - climate_zones:
+        - 0A
+        - 0B
+        - 1A
+        - 1B
+        - 2A
+        - 2B
+        - 3A
+        - 3B
+        - 3C
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - METAL_BUILDING
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.23280882950654794
+      - climate_zones:
+        - 0A
+        - 0B
+        - 1A
+        - 1B
+        - 2A
+        - 2B
+        - 3A
+        - 3B
+        - 3C
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - ATTIC
+        - OTHER
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.15331313162626325
+      - climate_zones:
+        - 1A
+        - 1B
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - INSULATION_ENTIRELY_ABOVE_DECK
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.27255667844669024
+      - climate_zones:
+        - 1A
+        - 1B
+        occupancy_types:
+        - RESIDENTIAL
+        construction_types:
+        - INSULATION_ENTIRELY_ABOVE_DECK
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.22145230123793583
+      - climate_zones:
+        - 2A
+        - 2B
+        - 3A
+        - 3B
+        - 3C
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - INSULATION_ENTIRELY_ABOVE_DECK
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.22145230123793583
+      - climate_zones:
+        - 4A
+        - 4B
+        - 4C
+        - 5A
+        - 5B
+        - 5C
+        - 6A
+        - 6B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - INSULATION_ENTIRELY_ABOVE_DECK
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.1817044522977935
+      - climate_zones:
+        - 4A
+        - 4B
+        - 4C
+        - 5A
+        - 5B
+        - 5C
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - METAL_BUILDING
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.21009577296932372
+      - climate_zones:
+        - 4A
+        - 4B
+        - 4C
+        - 5A
+        - 5B
+        - 5C
+        - 6A
+        - 6B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - ATTIC
+        - OTHER
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.11924354682042698
+      - climate_zones:
+        - 6A
+        - 6B
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - METAL_BUILDING
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.17602618816348745
+      - climate_zones:
+        - 6A
+        - 6B
+        occupancy_types:
+        - RESIDENTIAL
+        construction_types:
+        - METAL_BUILDING
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.16466965989487536
+      - climate_zones:
+        - '7'
+        - '8'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - INSULATION_ENTIRELY_ABOVE_DECK
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.1589913957605693
+      - climate_zones:
+        - '7'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - METAL_BUILDING
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.16466965989487536
+      - climate_zones:
+        - '7'
+        - '8'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - ATTIC
+        - OTHER
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.0965304902832028
+      - climate_zones:
+        - '8'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - METAL_BUILDING
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.1476348674919572
+      semi_exterior_roofs:
+      - climate_zones:
+        - 0A
+        - 0B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - INSULATION_ENTIRELY_ABOVE_DECK
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 1.2378615812787181
+      - climate_zones:
+        - 0A
+        - 0B
+        - 1A
+        - 1B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - METAL_BUILDING
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.6530003754451954
+      - climate_zones:
+        - 0A
+        - 0B
+        - 1A
+        - 1B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - ATTIC
+        - OTHER
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.4599393948787898
+      - climate_zones:
+        - 1A
+        - 1B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - INSULATION_ENTIRELY_ABOVE_DECK
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 1.2378615812787181
+      - climate_zones:
+        - 2A
+        - 2B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - INSULATION_ENTIRELY_ABOVE_DECK
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.982339695234946
+      - climate_zones:
+        - 2A
+        - 2B
+        - 3A
+        - 3B
+        - 3C
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - METAL_BUILDING
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.5451133568933805
+      - climate_zones:
+        - 2A
+        - 2B
+        - 3A
+        - 3B
+        - 3C
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - ATTIC
+        - OTHER
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.30094799911822046
+      - climate_zones:
+        - 3A
+        - 3B
+        - 3C
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - INSULATION_ENTIRELY_ABOVE_DECK
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.6757134319824195
+      - climate_zones:
+        - 4A
+        - 4B
+        - 4C
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - INSULATION_ENTIRELY_ABOVE_DECK
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.5280785644904623
+      - climate_zones:
+        - 4A
+        - 4B
+        - 4C
+        - 5A
+        - 5B
+        - 5C
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - METAL_BUILDING
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.4656176590130959
+      - climate_zones:
+        - 4A
+        - 4B
+        - 4C
+        - 5A
+        - 5B
+        - 5C
+        - 6A
+        - 6B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - ATTIC
+        - OTHER
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.1930609805664056
+      - climate_zones:
+        - 5A
+        - 5B
+        - 5C
+        - 6A
+        - 6B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - INSULATION_ENTIRELY_ABOVE_DECK
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.35773064046128095
+      - climate_zones:
+        - 6A
+        - 6B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - METAL_BUILDING
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.3406958480583628
+      - climate_zones:
+        - '7'
+        - '8'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - INSULATION_ENTIRELY_ABOVE_DECK
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.22145230123793583
+      - climate_zones:
+        - '7'
+        - '8'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - METAL_BUILDING
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.21009577296932372
+      - climate_zones:
+        - '7'
+        - '8'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - ATTIC
+        - OTHER
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Roof
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.15331313162626325
+      exterior_walls:
+      - climate_zones:
+        - 0A
+        - 0B
+        - 1A
+        - 1B
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 3.293393197897507
+      - climate_zones:
+        - 0A
+        - 0B
+        - 1A
+        - 1B
+        occupancy_types:
+        - RESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.857417884280213
+      - climate_zones:
+        - 0A
+        - 0B
+        - 1A
+        - 1B
+        - 2A
+        - 2B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - METAL_BUILDING
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.5337568286247684
+      - climate_zones:
+        - 0A
+        - 0B
+        - 1A
+        - 1B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - STEEL_FRAMED
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.7041047526539498
+      - climate_zones:
+        - 0A
+        - 0B
+        - 1A
+        - 1B
+        - 2A
+        - 2B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - WOOD_FRAMED
+        - OTHER
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.5053655079532381
+      - climate_zones:
+        - 2A
+        - 2B
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.857417884280213
+      - climate_zones:
+        - 2A
+        - 2B
+        occupancy_types:
+        - RESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.6984264885196437
+      - climate_zones:
+        - 2A
+        - 2B
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - STEEL_FRAMED
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.47697418728170793
+      - climate_zones:
+        - 2A
+        - 2B
+        occupancy_types:
+        - RESIDENTIAL
+        construction_types:
+        - STEEL_FRAMED
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.363408904595587
+      - climate_zones:
+        - 3A
+        - 3B
+        - 3C
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.6984264885196437
+      - climate_zones:
+        - 3A
+        - 3B
+        - 3C
+        occupancy_types:
+        - RESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.5905394699678288
+      - climate_zones:
+        - 3A
+        - 3B
+        - 3C
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - METAL_BUILDING
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.5337568286247684
+      - climate_zones:
+        - 3A
+        - 3B
+        - 3C
+        occupancy_types:
+        - RESIDENTIAL
+        construction_types:
+        - METAL_BUILDING
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.40883501767003533
+      - climate_zones:
+        - 3A
+        - 3B
+        - 3C
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - STEEL_FRAMED
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.4372263383415656
+      - climate_zones:
+        - 3A
+        - 3B
+        - 3C
+        occupancy_types:
+        - RESIDENTIAL
+        construction_types:
+        - STEEL_FRAMED
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.363408904595587
+      - climate_zones:
+        - 3A
+        - 3B
+        - 3C
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - WOOD_FRAMED
+        - OTHER
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.5053655079532381
+      - climate_zones:
+        - 3A
+        - 3B
+        - 3C
+        occupancy_types:
+        - RESIDENTIAL
+        construction_types:
+        - WOOD_FRAMED
+        - OTHER
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.363408904595587
+      - climate_zones:
+        - 4A
+        - 4B
+        - 4C
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.5905394699678288
+      - climate_zones:
+        - 4A
+        - 4B
+        - 4C
+        occupancy_types:
+        - RESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.5110437720875441
+      - climate_zones:
+        - 4A
+        - 4B
+        - 4C
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - METAL_BUILDING
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.3406958480583628
+      - climate_zones:
+        - 4A
+        - 4B
+        - 4C
+        occupancy_types:
+        - RESIDENTIAL
+        construction_types:
+        - METAL_BUILDING
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.28391320671530235
+      - climate_zones:
+        - 4A
+        - 4B
+        - 4C
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - STEEL_FRAMED
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.363408904595587
+      - climate_zones:
+        - 4A
+        - 4B
+        - 4C
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - WOOD_FRAMED
+        - OTHER
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.363408904595587
+      - climate_zones:
+        - 5A
+        - 5B
+        - 5C
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.5110437720875441
+      - climate_zones:
+        - 5A
+        - 5B
+        - 5C
+        occupancy_types:
+        - RESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.45426113074448377
+      - climate_zones:
+        - 5A
+        - 5B
+        - 5C
+        - 6A
+        - 6B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - METAL_BUILDING
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.28391320671530235
+      - climate_zones:
+        - 5A
+        - 5B
+        - 5C
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - STEEL_FRAMED
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.31230452738683256
+      - climate_zones:
+        - 5A
+        - 5B
+        - 5C
+        - 6A
+        - 6B
+        - '7'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - WOOD_FRAMED
+        - OTHER
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.28959147084960835
+      - climate_zones:
+        - 6A
+        - 6B
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.45426113074448377
+      - climate_zones:
+        - 6A
+        - 6B
+        occupancy_types:
+        - RESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.4031567535357293
+      - climate_zones:
+        - 6A
+        - 6B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - STEEL_FRAMED
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.2782349425809963
+      - climate_zones:
+        - '7'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.4031567535357293
+      - climate_zones:
+        - '7'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - METAL_BUILDING
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.24984362190946605
+      - climate_zones:
+        - '7'
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - STEEL_FRAMED
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.2782349425809963
+      - climate_zones:
+        - '7'
+        occupancy_types:
+        - RESIDENTIAL
+        construction_types:
+        - STEEL_FRAMED
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.23848709364085396
+      - climate_zones:
+        - '8'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.27255667844669024
+      - climate_zones:
+        - '8'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - METAL_BUILDING
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.22145230123793583
+      - climate_zones:
+        - '8'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - STEEL_FRAMED
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.21009577296932372
+      - climate_zones:
+        - '8'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - WOOD_FRAMED
+        - OTHER
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.1817044522977935
+      semi_exterior_walls:
+      - climate_zones:
+        - 0A
+        - 0B
+        - 1A
+        - 1B
+        - 2A
+        - 2B
+        - 3A
+        - 3B
+        - 3C
+        - 4A
+        - 4B
+        - 4C
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 3.293393197897507
+      - climate_zones:
+        - 0A
+        - 0B
+        - 1A
+        - 1B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - METAL_BUILDING
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 3.293393197897507
+      - climate_zones:
+        - 0A
+        - 0B
+        - 1A
+        - 1B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - STEEL_FRAMED
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 1.9987489752757284
+      - climate_zones:
+        - 0A
+        - 0B
+        - 1A
+        - 1B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - WOOD_FRAMED
+        - OTHER
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 1.6580531272173655
+      - climate_zones:
+        - 2A
+        - 2B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - METAL_BUILDING
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.9198787897575796
+      - climate_zones:
+        - 2A
+        - 2B
+        - 3A
+        - 3B
+        - 3C
+        - 4A
+        - 4B
+        - 4C
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - STEEL_FRAMED
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.7041047526539498
+      - climate_zones:
+        - 2A
+        - 2B
+        - 3A
+        - 3B
+        - 3C
+        - 4A
+        - 4B
+        - 4C
+        - 5A
+        - 5B
+        - 5C
+        - 6A
+        - 6B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - WOOD_FRAMED
+        - OTHER
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.5053655079532381
+      - climate_zones:
+        - 3A
+        - 3B
+        - 3C
+        - 4A
+        - 4B
+        - 4C
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - METAL_BUILDING
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.9198787897575796
+      - climate_zones:
+        - 5A
+        - 5B
+        - 5C
+        - 6A
+        - 6B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.857417884280213
+      - climate_zones:
+        - 5A
+        - 5B
+        - 5C
+        - 6A
+        - 6B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - METAL_BUILDING
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.5337568286247684
+      - climate_zones:
+        - 5A
+        - 5B
+        - 5C
+        - 6A
+        - 6B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - STEEL_FRAMED
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.47697418728170793
+      - climate_zones:
+        - '7'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.6984264885196437
+      - climate_zones:
+        - '7'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - METAL_BUILDING
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.40883501767003533
+      - climate_zones:
+        - '7'
+        - '8'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - STEEL_FRAMED
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.363408904595587
+      - climate_zones:
+        - '7'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - WOOD_FRAMED
+        - OTHER
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.363408904595587
+      - climate_zones:
+        - '8'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.5905394699678288
+      - climate_zones:
+        - '8'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - METAL_BUILDING
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.3406958480583628
+      - climate_zones:
+        - '8'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - WOOD_FRAMED
+        - OTHER
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.28959147084960835
+      exterior_floors:
+      - climate_zones:
+        - 0A
+        - 0B
+        - 1A
+        - 1B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 1.8284010512465472
+      - climate_zones:
+        - 0A
+        - 0B
+        - 1A
+        - 1B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - STEEL_JOIST
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 1.9873924470071163
+      - climate_zones:
+        - 0A
+        - 0B
+        - 1A
+        - 1B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - WOOD_FRAMED
+        - OTHER
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 1.601270485874305
+      - climate_zones:
+        - 2A
+        - 2B
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.607574262370747
+      - climate_zones:
+        - 2A
+        - 2B
+        occupancy_types:
+        - RESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.49400897968462604
+      - climate_zones:
+        - 2A
+        - 2B
+        - 3A
+        - 3B
+        - 3C
+        - 4A
+        - 4B
+        - 4C
+        - 5A
+        - 5B
+        - 5C
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - STEEL_JOIST
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.21577403710362977
+      - climate_zones:
+        - 2A
+        - 2B
+        - 3A
+        - 3B
+        - 3C
+        - 4A
+        - 4B
+        - 4C
+        - 5A
+        - 5B
+        - 5C
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - WOOD_FRAMED
+        - OTHER
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.18738271643209956
+      - climate_zones:
+        - 3A
+        - 3B
+        - 3C
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.42019154593864744
+      - climate_zones:
+        - 4A
+        - 4B
+        - 4C
+        - 5A
+        - 5B
+        - 5C
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.3236610556554447
+      - climate_zones:
+        - 4A
+        - 4B
+        - 4C
+        - 5A
+        - 5B
+        - 5C
+        occupancy_types:
+        - RESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.28959147084960835
+      - climate_zones:
+        - 6A
+        - 6B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.28959147084960835
+      - climate_zones:
+        - 6A
+        - 6B
+        - '7'
+        - '8'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - STEEL_JOIST
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.1817044522977935
+      - climate_zones:
+        - 6A
+        - 6B
+        - '7'
+        - '8'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - WOOD_FRAMED
+        - OTHER
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.15331313162626325
+      - climate_zones:
+        - '7'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.23848709364085396
+      - climate_zones:
+        - '8'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.21577403710362977
+      semi_exterior_floors:
+      - climate_zones:
+        - 0A
+        - 0B
+        - 1A
+        - 1B
+        - 2A
+        - 2B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 1.8284010512465472
+      - climate_zones:
+        - 0A
+        - 0B
+        - 1A
+        - 1B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - STEEL_JOIST
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 1.9873924470071163
+      - climate_zones:
+        - 0A
+        - 0B
+        - 1A
+        - 1B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - WOOD_FRAMED
+        - OTHER
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 1.601270485874305
+      - climate_zones:
+        - 2A
+        - 2B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - STEEL_JOIST
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.3918002252671173
+      - climate_zones:
+        - 2A
+        - 2B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - WOOD_FRAMED
+        - OTHER
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.3747654328641991
+      - climate_zones:
+        - 3A
+        - 3B
+        - 3C
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.7779221863999285
+      - climate_zones:
+        - 3A
+        - 3B
+        - 3C
+        - 4A
+        - 4B
+        - 4C
+        - 5A
+        - 5B
+        - 5C
+        - 6A
+        - 6B
+        - '7'
+        - '8'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - STEEL_JOIST
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.2952697349839144
+      - climate_zones:
+        - 3A
+        - 3B
+        - 3C
+        - 4A
+        - 4B
+        - 4C
+        - 5A
+        - 5B
+        - 5C
+        - 6A
+        - 6B
+        - '7'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - WOOD_FRAMED
+        - OTHER
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.28959147084960835
+      - climate_zones:
+        - 4A
+        - 4B
+        - 4C
+        - 5A
+        - 5B
+        - 5C
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.607574262370747
+      - climate_zones:
+        - 6A
+        - 6B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.49400897968462604
+      - climate_zones:
+        - '7'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.42019154593864744
+      - climate_zones:
+        - '8'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - MASS
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.363408904595587
+      - climate_zones:
+        - '8'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - WOOD_FRAMED
+        - OTHER
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior  Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          u_factor: 0.18738271643209956
+      exterior_below_grade_walls:
+      - climate_zones:
+        - 0A
+        - 0B
+        - 1A
+        - 1B
+        - 2A
+        - 2B
+        - 3A
+        - 3B
+        - 3C
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - BELOW_GRADE_WALL
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior Below-grade Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          c_factor: 6.473221113108893
+      - climate_zones:
+        - 4A
+        - 4B
+        - 4C
+        - 5A
+        - 5B
+        - 5C
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - BELOW_GRADE_WALL
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior Below-grade Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          c_factor: 0.6757134319824195
+      - climate_zones:
+        - 4A
+        - 4B
+        - 4C
+        - 5A
+        - 5B
+        - 5C
+        occupancy_types:
+        - RESIDENTIAL
+        construction_types:
+        - BELOW_GRADE_WALL
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior Below-grade Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          c_factor: 0.5224003003561563
+      - climate_zones:
+        - 6A
+        - 6B
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - BELOW_GRADE_WALL
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior Below-grade Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          c_factor: 0.5224003003561563
+      - climate_zones:
+        - 6A
+        - 6B
+        - '7'
+        - '8'
+        occupancy_types:
+        - RESIDENTIAL
+        construction_types:
+        - BELOW_GRADE_WALL
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior Below-grade Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          c_factor: 0.35773064046128095
+      - climate_zones:
+        - '7'
+        - '8'
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - BELOW_GRADE_WALL
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior Below-grade Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          c_factor: 0.35773064046128095
+      semi_exterior_below_grade_walls:
+      - climate_zones:
+        - 0A
+        - 0B
+        - 1A
+        - 1B
+        - 2A
+        - 2B
+        - 3A
+        - 3B
+        - 3C
+        - 4A
+        - 4B
+        - 4C
+        - 5A
+        - 5B
+        - 5C
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - BELOW_GRADE_WALL
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior Below-grade
+            Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          c_factor: 6.473221113108893
+      - climate_zones:
+        - 6A
+        - 6B
+        - '7'
+        - '8'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - BELOW_GRADE_WALL
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior Below-grade
+            Wall
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          c_factor: 0.6757134319824195
+      exterior_on_grade_floors:
+      - climate_zones:
+        - 0A
+        - 0B
+        - 1A
+        - 1B
+        - 2A
+        - 2B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - SLAB_ON_GRADE
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior On-grade Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          f_factor: 1.2634364829396327
+      - climate_zones:
+        - 0A
+        - 0B
+        - 1A
+        - 1B
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - SLAB_ON_GRADE
+        has_radiant_heating: true
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior On-grade Floor
+          notes: 12 inches
+          surface_construction_input_option: SIMPLIFIED
+          has_radiant_heating: true
+          f_factor: 1.765349606299213
+      - climate_zones:
+        - 2A
+        - 2B
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - SLAB_ON_GRADE
+        has_radiant_heating: true
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior On-grade Floor
+          notes: 24 inches
+          surface_construction_input_option: SIMPLIFIED
+          has_radiant_heating: true
+          f_factor: 1.557661417322835
+      - climate_zones:
+        - 2A
+        - 2B
+        - 3A
+        - 3B
+        - 3C
+        occupancy_types:
+        - RESIDENTIAL
+        construction_types:
+        - SLAB_ON_GRADE
+        has_radiant_heating: true
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior On-grade Floor
+          notes: 24 inches
+          surface_construction_input_option: SIMPLIFIED
+          has_radiant_heating: true
+          f_factor: 1.4884320209973754
+      - climate_zones:
+        - 3A
+        - 3B
+        - 3C
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - SLAB_ON_GRADE
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior On-grade Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          f_factor: 1.2634364829396327
+      - climate_zones:
+        - 3A
+        - 3B
+        - 3C
+        occupancy_types:
+        - RESIDENTIAL
+        construction_types:
+        - SLAB_ON_GRADE
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior On-grade Floor
+          notes: 24 inches
+          surface_construction_input_option: SIMPLIFIED
+          f_factor: 0.934596850393701
+      - climate_zones:
+        - 3A
+        - 3B
+        - 3C
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - SLAB_ON_GRADE
+        has_radiant_heating: true
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior On-grade Floor
+          notes: 24 inches
+          surface_construction_input_option: SIMPLIFIED
+          has_radiant_heating: true
+          f_factor: 1.4884320209973754
+      - climate_zones:
+        - 4A
+        - 4B
+        - 4C
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - SLAB_ON_GRADE
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior On-grade Floor
+          notes: 24 inches
+          surface_construction_input_option: SIMPLIFIED
+          f_factor: 0.8999821522309712
+      - climate_zones:
+        - 4A
+        - 4B
+        - 4C
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - SLAB_ON_GRADE
+        has_radiant_heating: true
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior On-grade Floor
+          notes: 24 inches
+          surface_construction_input_option: SIMPLIFIED
+          has_radiant_heating: true
+          f_factor: 1.4590095275590553
+      - climate_zones:
+        - 4A
+        - 4B
+        - 4C
+        occupancy_types:
+        - RESIDENTIAL
+        construction_types:
+        - SLAB_ON_GRADE
+        has_radiant_heating: true
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior On-grade Floor
+          notes: 48 inches
+          surface_construction_input_option: SIMPLIFIED
+          has_radiant_heating: true
+          f_factor: 1.1907456167979003
+      - climate_zones:
+        - 5A
+        - 5B
+        - 5C
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - SLAB_ON_GRADE
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior On-grade Floor
+          notes: 24 inches
+          surface_construction_input_option: SIMPLIFIED
+          f_factor: 0.8999821522309712
+      - climate_zones:
+        - 5A
+        - 5B
+        - 5C
+        occupancy_types:
+        - RESIDENTIAL
+        construction_types:
+        - SLAB_ON_GRADE
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior On-grade Floor
+          notes: 24 inches
+          surface_construction_input_option: SIMPLIFIED
+          f_factor: 0.8826748031496064
+      - climate_zones:
+        - 5A
+        - 5B
+        - 5C
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - SLAB_ON_GRADE
+        has_radiant_heating: true
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior On-grade Floor
+          notes: 48 inches
+          surface_construction_input_option: SIMPLIFIED
+          has_radiant_heating: true
+          f_factor: 1.1907456167979003
+      - climate_zones:
+        - 6A
+        - 6B
+        - '7'
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - SLAB_ON_GRADE
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior On-grade Floor
+          notes: 24 inches
+          surface_construction_input_option: SIMPLIFIED
+          f_factor: 0.8826748031496064
+      - climate_zones:
+        - 6A
+        - 6B
+        - '7'
+        occupancy_types:
+        - RESIDENTIAL
+        construction_types:
+        - SLAB_ON_GRADE
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior On-grade Floor
+          notes: 48 inches
+          surface_construction_input_option: SIMPLIFIED
+          f_factor: 0.7511389501312337
+      - climate_zones:
+        - 6A
+        - 6B
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - SLAB_ON_GRADE
+        has_radiant_heating: true
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior On-grade Floor
+          notes: 48 inches
+          surface_construction_input_option: SIMPLIFIED
+          has_radiant_heating: true
+          f_factor: 1.1907456167979003
+      - climate_zones:
+        - 6A
+        - 6B
+        occupancy_types:
+        - RESIDENTIAL
+        construction_types:
+        - SLAB_ON_GRADE
+        has_radiant_heating: true
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior On-grade Floor
+          notes: 48 inches
+          surface_construction_input_option: SIMPLIFIED
+          has_radiant_heating: true
+          f_factor: 1.1613231233595802
+      - climate_zones:
+        - '7'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - SLAB_ON_GRADE
+        has_radiant_heating: true
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior On-grade Floor
+          notes: 48 inches
+          surface_construction_input_option: SIMPLIFIED
+          has_radiant_heating: true
+          f_factor: 1.1613231233595802
+      - climate_zones:
+        - '8'
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - SLAB_ON_GRADE
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior On-grade Floor
+          notes: 48 inches
+          surface_construction_input_option: SIMPLIFIED
+          f_factor: 0.7511389501312337
+      - climate_zones:
+        - '8'
+        occupancy_types:
+        - RESIDENTIAL
+        construction_types:
+        - SLAB_ON_GRADE
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior On-grade Floor
+          notes: 48 inches
+          surface_construction_input_option: SIMPLIFIED
+          f_factor: 0.7338316010498688
+      - climate_zones:
+        - '8'
+        occupancy_types:
+        - NONRESIDENTIAL
+        construction_types:
+        - SLAB_ON_GRADE
+        has_radiant_heating: true
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior On-grade Floor
+          notes: 48 inches
+          surface_construction_input_option: SIMPLIFIED
+          has_radiant_heating: true
+          f_factor: 1.1613231233595802
+      - climate_zones:
+        - '8'
+        occupancy_types:
+        - RESIDENTIAL
+        construction_types:
+        - SLAB_ON_GRADE
+        has_radiant_heating: true
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Exterior On-grade Floor
+          notes: Full slab
+          surface_construction_input_option: SIMPLIFIED
+          has_radiant_heating: true
+          f_factor: 0.6455641207349082
+      semi_exterior_on_grade_floors:
+      - climate_zones:
+        - 0A
+        - 0B
+        - 1A
+        - 1B
+        - 2A
+        - 2B
+        - 3A
+        - 3B
+        - 3C
+        - 4A
+        - 4B
+        - 4C
+        - 5A
+        - 5B
+        - 5C
+        - 6A
+        - 6B
+        - '7'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - SLAB_ON_GRADE
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior On-grade
+            Floor
+          notes: ''
+          surface_construction_input_option: SIMPLIFIED
+          f_factor: 1.2634364829396327
+      - climate_zones:
+        - 0A
+        - 0B
+        - 1A
+        - 1B
+        - 2A
+        - 2B
+        - 3A
+        - 3B
+        - 3C
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - SLAB_ON_GRADE
+        has_radiant_heating: true
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior On-grade
+            Floor
+          notes: 12 inches
+          surface_construction_input_option: SIMPLIFIED
+          has_radiant_heating: true
+          f_factor: 1.765349606299213
+      - climate_zones:
+        - 4A
+        - 4B
+        - 4C
+        - 5A
+        - 5B
+        - 5C
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - SLAB_ON_GRADE
+        has_radiant_heating: true
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior On-grade
+            Floor
+          notes: 24 inches
+          surface_construction_input_option: SIMPLIFIED
+          has_radiant_heating: true
+          f_factor: 1.557661417322835
+      - climate_zones:
+        - 6A
+        - 6B
+        - '7'
+        - '8'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - SLAB_ON_GRADE
+        has_radiant_heating: true
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior On-grade
+            Floor
+          notes: 24 inches
+          surface_construction_input_option: SIMPLIFIED
+          has_radiant_heating: true
+          f_factor: 1.4884320209973754
+      - climate_zones:
+        - '8'
+        occupancy_types:
+        - NONRESIDENTIAL
+        - RESIDENTIAL
+        construction_types:
+        - SLAB_ON_GRADE
+        has_radiant_heating: false
+        construction:
+          id: 2019 ASHRAE Standard 90.1 Energy Cost Budget Semi-exterior On-grade
+            Floor
+          notes: 24 inches
+          surface_construction_input_option: SIMPLIFIED
+          f_factor: 0.934596850393701
