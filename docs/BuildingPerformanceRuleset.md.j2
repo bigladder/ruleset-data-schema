@@ -1,14 +1,44 @@
 # Building Performance Ruleset Data Model Specification
 
+This specification is intended to supplement the ASHRAE Standard 229P Ruleset Model Description (RMD) schema. Where the RMD schema attempts to characterize ruleset models for a specific building design, this specification characterizes the data from the ruleset needed to apply a ruleset to any building design.
+
 ## Scope
 
-
+This specification covers building performance ruleset data.
 
 ### Applicability
 
+This specifcation applies to any building performance ruleset containing rules on how to transform a user design model into derivative buidling design models. Such derivatives go by several names within the industry, including (but not limited to):
+
+- Proposed design
+- Budget design
+- Standard design
+- Reference design
+- Baseline desing
+- Benchmark design
+- Prescriptive design
+
+This specification also covers definitons of terms within the ruleset that are required to interpret the rules, such as definitions of:
+
+- Climate zones
+- Occupancy types
+- Space conditioning types
+- Space function types
+- Construction types
+
+This draft of the specification only includes ruleset data for describing opaque envelope rules.
 
 ### Exclusions
 
+This specification does not cover rules that involve more sophisticated logic that is better suited for programming-language spcific syntax rather than data files.
+
+This draft of the specification does not include ruleset data for the following types of rules (but are planned for future versions):
+
+- Fenestration rules
+- HVAC rules
+- Lighting rules
+- Equipment rules
+- Service hot water rules
 
 ## Data Model
 
@@ -16,9 +46,11 @@
 
 ## Verification Rules
 
+None.
 
 ## Publishing Rules
 
+None.
 
 ## Application Rules
 
