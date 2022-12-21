@@ -6,7 +6,7 @@ authors = ["Big Ladder Software"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
-lattice = {git = "https://github.com/bigladder/lattice.git", branch="main"}
+lattice = "^0.1.4"
 
 [tool.poetry.dev-dependencies]
 doit = "0.33.0"
